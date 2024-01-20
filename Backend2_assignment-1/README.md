@@ -150,7 +150,7 @@ _Below is an example of how you can install and set up the app._
 ## Authors
 
 - [@Ali Moteirek](https://github.com/AliAMoteirek)
-- [@Frederico Barberi](https://github.com/F3f0)
+- [@Federico Barberi](https://github.com/F3f0)
 - [@Roberto Mendez](https://github.com/robmndz)
 - [@Yasser Al dahwi](https://github.com/YasserAldahwi)
 
