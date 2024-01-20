@@ -1,0 +1,56 @@
+version: "3"
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.9.11-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  springboot-app:
+    container_name: api
+    image: webshop_api:latest
+    restart: always
+    build: api/
+    ports:
+      - "8080:8080"
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+      RABBITMQ: rabbitmq:5672
+
+  frontend-app:
+    container_name: frontend-app
+    image: webshop_frontend:latest
+    build: frontend/
+    depends_on:
+      - webshop_api_docker_compose
+    ports:
+      - "8081:8081"
+    environment:
+      TEMPLATER_HOST_NAME: http://springboot-app:8080
+
+  receiptservice-app:
+    container_name: receiptservice-app
+    image: webshop_receiptservice:latest
+    restart: always
+    build: receiptservice/
+    ports:
+      - "8082:8082"
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+      RABBITMQ: rabbitmq:5672
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
