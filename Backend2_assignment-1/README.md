@@ -147,11 +147,6 @@ _Below is an example of how you can install and set up the app._
 |:---------------|:---------|:-----------------------------------|
 | `name of item` | `string` | **Required**. Name of item to post |
 
-## Authors
 
-- [@Ali Moteirek](https://github.com/AliAMoteirek)
-- [@Federico Barberi](https://github.com/F3f0)
-- [@Roberto Mendez](https://github.com/robmndz)
-- [@Yasser Al dahwi](https://github.com/YasserAldahwi)
 
 
